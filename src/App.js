@@ -1,7 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './store'
 import './App.css';
-import WeightForm from './components/WeightForm'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import WeightForm from './components/WeightForm';
+
+
 
 //katch-mcardle formula
 //BMR = 370 + (21.6*Lean body mass(kg))
@@ -14,9 +19,14 @@ import WeightForm from './components/WeightForm'
 
 function App() {
   return (
-    <div className="App">
-      <WeightForm></WeightForm>
-    </div>
+    <Provider store={store}>
+        <div className="App">
+        <Header />
+          <WeightForm exact path="/"></WeightForm>
+        </div>
+    </Provider>
+
+    
   );
 }
 

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Field, Control, For, combineForms } from 'react-redux-form';
 
 class WeightForm extends Component {
 	constructor(props) {
@@ -34,8 +35,21 @@ class WeightForm extends Component {
   render() {
 	return (
 	  <div>
-		<h1>Input</h1>
+		<h1>TDEE Calculator</h1>
 		<form onSubmit={this.onSubmit}>
+			<div>
+				<field>
+					<label>
+						<input type="radio" value="male" />
+						Male
+					</label>
+					<label>
+						<input type="radio" value="female" />
+						Female
+					</label>
+				</field>
+				
+			</div>
 			<div>
 				<label>Weight: </label><br/>
 				<input 
