@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Field, Control, For, combineForms } from 'react-redux-form';
+import TdeeResults from './TdeeResults';
 
 class WeightForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			gender: '',
 			weight: 0,
 			age: 0,
 			heightFeet: 0,
 			heightInches: 0,
-			activity: 0
+			activity: '1'
 		}
 		
 		this.onChange = this.onChange.bind(this);
@@ -24,10 +25,12 @@ class WeightForm extends Component {
 		const post = {
 			weight: this.state.weight,
 			age: this.state.age,
+			gender: this.state.gender,
 			heightFeet: this.state.heightFeet,
 			heightInches: this.state.heightInches,
 			activity: this.state.activity
 		}
+
 	}
 
 
@@ -40,15 +43,22 @@ class WeightForm extends Component {
 			<div>
 				<field>
 					<label>
-						<input type="radio" value="male" />
+						<input 
+						type="radio" 
+						name="gender"
+						value="male" 
+						onChange={this.onChange}/>
 						Male
 					</label>
 					<label>
-						<input type="radio" value="female" />
+						<input 
+						type="radio" 
+						name="gender"
+						value="female" 
+						onChange={this.onChange}/>
 						Female
 					</label>
-				</field>
-				
+				</field>	
 			</div>
 			<div>
 				<label>Weight: </label><br/>
@@ -80,12 +90,24 @@ class WeightForm extends Component {
 			</div>
 			<div>
 				<label>Activity</label><br/>
-				<input 
-				type="text"
-				name="activity" />
+				<select
+				name="activity"
+				type="number"
+				onChange={this.onChange}>
+					<option
+					value="1">Sedentary</option>
+					<option
+					value="2">Light Exercise</option>
+					<option
+					value="3">Moderate Exercise</option>
+					<option
+					value="4">Heavy Exercise</option>
+					<option
+					value="5">Athlete</option>
+				</select>
 			</div>
 			<br/>
-			<button type="submit">Submit</button>
+			<button href='/results' handler={TdeeResults} type="submit">Submit</button>
 		</form>
 	  </div>
 	)

@@ -1,11 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { store } from './store'
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import WeightForm from './components/WeightForm';
-
 
 
 //katch-mcardle formula
@@ -19,14 +14,11 @@ import WeightForm from './components/WeightForm';
 
 function App() {
   return (
-    <Provider store={store}>
-        <div className="App">
-        <Header />
-          <WeightForm exact path="/"></WeightForm>
-        </div>
-    </Provider>
-
-    
+    <div>
+      <WeightForm />
+    </div>
+      
+ 
   );
 }
 

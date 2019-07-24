@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware } from 'redux';
-import { combineForms, createForms } from 'react-redux-form';
-  
+import { createStore, applyMiddleware } from 'redux';  
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
-const initialUserState = {
-    weight: 0,
-    age: 0,
-    heightFeet: 0,
-    heightInches: 0,
-    activity: 0
-};
+const initialState = {};
 
-const store = createStore(combineForms({
-    user: initialUserState,
-}))
+const middleware = [thunk];
+
+const store = createStore(
+    rootReducer, 
+    initialState, 
+    applyMiddleware(...middleware)
+);
+
+export default store;
